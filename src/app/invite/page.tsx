@@ -1,12 +1,13 @@
 import Image from 'next/image'
 import logo from '../../assets/Logo.svg'
 
-import { InputField, InputIcon, InputRoot } from '@/components/input'
-
-import { IconButton } from '@/components/icon-button'
-import { Copy, Link } from 'lucide-react'
+import { InviteLinkInput } from './invite-link-input'
+import { Ranking } from './ranking'
+import { Stats } from './stats'
 
 export default function InvitePage() {
+  const inviteLink = 'http://localhost:3000/12334354359'
+
   return (
     <div className="min-h-dvh flex items-center justify-between gap-16 flex-col md:flex-row">
       <div className="flex flex-col gap-10 w-ful max-w-[550px]">
@@ -33,51 +34,13 @@ export default function InvitePage() {
             </p>
           </div>
 
-          <InputRoot>
-            <InputIcon>
-              <Link className="size-5" />
-            </InputIcon>
+          <InviteLinkInput inviteLink={inviteLink} />
 
-            <InputField
-              readOnly
-              defaultValue="http://localhost:3000/invite/12131334233f"
-            />
-
-            <IconButton className="-mr-2">
-              <Copy className="size-5" />
-            </IconButton>
-          </InputRoot>
-
-          <div className="grid gap-3 md:grid-cols-3">
-            <div className="bg-gray-700 border border-gay-600 px-4 py-7 flex flex-col items-center justify-center gap-1 rounded-xl">
-              <span className="font-heading text-2xl font-semibold text-gray-200 leading-none">
-                1042
-              </span>
-              <span className="text-sm text-gray-300 leading-none text-center">
-                Acessos ao link
-              </span>
-            </div>
-
-            <div className="bg-gray-700 border border-gay-600 px-4 py-7 flex flex-col items-center justify-center gap-1 rounded-xl">
-              <span className="font-heading text-2xl font-semibold text-gray-200 leading-none">
-                875
-              </span>
-              <span className="text-sm text-gray-300 leading-none text-center">
-                Inscrições feitas
-              </span>
-            </div>
-
-            <div className="bg-gray-700 border border-gay-600 px-4 py-7 flex flex-col items-center justify-center gap-1 rounded-xl">
-              <span className="font-heading text-2xl font-semibold text-gray-200 leading-none">
-                3
-              </span>
-              <span className="text-sm text-gray-300 leading-none text-center">
-                Posição no ranking
-              </span>
-            </div>
-          </div>
+          <Stats />
         </div>
       </div>
+
+      <Ranking />
     </div>
   )
 }
